@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  try {
-    runApp(MyApp as Widget);
-  } catch (e) {
-    print(e);
-  }
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyApp(title: 'hello form chai code'),
+    ),
+  );
 }
+// isActive
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    throw Container();
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Center(child: Text(" hello from chai", style: TextStyle())),
+    );
   }
 }
