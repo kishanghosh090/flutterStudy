@@ -26,15 +26,23 @@ class MyApp extends StatelessWidget {
             gradient: LinearGradient(
               begin: AlignmentGeometry.topCenter,
               colors: [
-                Colors.teal,
-                Colors.transparent,
-                Colors.redAccent,
-                Colors.pinkAccent,
+                const Color.fromARGB(255, 61, 12, 70),
+                const Color.fromARGB(255, 36, 21, 63),
+                const Color.fromARGB(255, 46, 30, 74),
+                const Color.fromARGB(255, 48, 11, 55),
               ],
             ),
           ),
           child: const Center(
-            child: Text(" hello from chai", style: TextStyle()),
+            child: Text(
+              " hello from chai",
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Popins',
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
       ),
