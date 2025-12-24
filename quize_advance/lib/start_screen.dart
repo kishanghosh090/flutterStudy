@@ -10,9 +10,21 @@ class StartScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset("./assets/images/quiz-logo.png", width: 300),
+          // Opacity(
+          //   opacity: 0.2,
+          //   child: Image.asset("./assets/images/quiz-logo.png", width: 300),
+          // ),
+          Image.asset(
+            "./assets/images/quiz-logo.png",
+            width: 300,
+            color: const Color.fromARGB(45, 255, 255, 255),
+          ),
           SizedBox(height: 30),
-          ElevatedButton(onPressed: () {}, child: Text("Get Started")),
+          OutlinedButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.arrow_right_alt, color: Colors.white),
+            label: Text("Get Started", style: TextStyle(color: Colors.white)),
+          ),
         ],
       ),
     );
