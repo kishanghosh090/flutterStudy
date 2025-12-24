@@ -1,9 +1,48 @@
-import 'package:dice_app/styled_text.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key, required this.title});
-  final String title;
+class GradientContainer extends StatefulWidget {
+  const GradientContainer(this.color1, this.color2, {super.key});
+
+  const GradientContainer.purple({super.key})
+    : color1 = Colors.deepPurple,
+      color2 = Colors.indigo;
+
+  final Color color1;
+  final Color color2;
+
+  @override
+  State<GradientContainer> createState() => _GradientContainerState();
+}
+
+class _GradientContainerState extends State<GradientContainer> {
+  int min = 1;
+
+  int max = 6;
+
+  var random = Random();
+
+  late int diceValue;
+
+  @override
+  void initState() {
+    super.initState();
+    diceValue = min + random.nextInt((max - min) + 1);
+  }
+
+  // The formula is min + random.nextInt((max - min) + 1)
+  int get value => diceValue;
+
+  final images = [
+    "assets/images/dice-1.png",
+    "assets/images/dice-2.png",
+    "assets/images/dice-3.png",
+    "assets/images/dice-4.png",
+    "assets/images/dice-5.png",
+    "assets/images/dice-6.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,14 +55,29 @@ class GradientContainer extends StatelessWidget {
             gradient: LinearGradient(
               begin: AlignmentGeometry.topCenter,
               colors: [
-                const Color.fromARGB(255, 61, 12, 70),
-                const Color.fromARGB(255, 36, 21, 63),
-                const Color.fromARGB(255, 46, 30, 74),
-                const Color.fromARGB(255, 48, 11, 55),
+                GradientContainer.purple().color1,
+                GradientContainer.purple().color2,
               ],
             ),
           ),
-          child: const Center(child: StyledText(title: "hello from kishan")),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(images[value - 1], width: 200),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      diceValue = min + random.nextInt((max - min) + 1);
+                    });
+                  },
+                  child: Text("Roll Dice"),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

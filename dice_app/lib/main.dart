@@ -5,7 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GradientContainer(title: 'hello form chai code'),
+      home: GradientContainer(Colors.deepPurple, Colors.indigo),
     ),
   );
 }
